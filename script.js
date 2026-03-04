@@ -26,11 +26,8 @@ const mobileToggle = document.getElementById('mobileToggle');
 const navMenu = document.querySelector('.nav-menu');
 
 mobileToggle.addEventListener('click', () => {
-    if (navMenu.style.display === 'flex') {
-        navMenu.style.display = 'none';
-    } else {
-        navMenu.style.display = 'flex';
-    }
+    navMenu.classList.toggle('show');
+    mobileToggle.classList.toggle('open');
 });
 
 // Close mobile menu when a link is clicked (only on mobile view)
@@ -38,7 +35,8 @@ document.querySelectorAll('.nav-menu a').forEach(link => {
     link.addEventListener('click', () => {
         // Only close menu if mobile toggle is visible (mobile view)
         if (window.getComputedStyle(mobileToggle).display !== 'none') {
-            navMenu.style.display = 'none';
+            navMenu.classList.remove('show');
+            mobileToggle.classList.remove('open');
         }
     });
 });
